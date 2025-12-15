@@ -1,42 +1,76 @@
-public class Engine imnplements EngineRequirements.java{
+public class Engine implements EngineRequirements{
 
-    //Attributes
+    /** 
+     * The fuel type used
+     */
     private FuelType fuelType; 
-    private double currentFuelLevel;
-    private double maxFuelLevel;    
-    
-    //Accessors
-    public FuelType getFuelType() {
-        return fuelType;
-    }
-    public double getCurrentFuelLevel() {
-        return currentFuelLevel;
-    }
-    public double getMaxFuelLevel() {
-        return maxFuelLevel;
-    }
 
-    //Constructor 
-    public Engine(FuelType fuelType, double maxFuelLevel, double currentFuelLevel) {
+    /** 
+     * The current amount of fuel in the engine
+     */
+    private double currentFuel;
+
+    /** 
+     * The maximum fuel capacity
+     */
+    private double maxFuel;    
+
+    /**
+     * Construct new Engine
+     * @param fuelType the fuel type used 
+     * @param currentFuel the starting fuel level
+     * @param maxFuel the maximum fuel capacity
+     */
+    public Engine(FuelType fuelType, double currentFuel, double maxFuel) {
         this.fuelType = fuelType;
-        this.maxFuelLevel = maxFuelLevel;
-        this.currentFuelLevel = maxFuelLevel;
+        this.currentFuel = currentFuel;
+        this.maxFuel = maxFuel;
     }
 
-    //Methods
-    public void refuel() {
-        currentFuelLevel = maxFuelLevel;
-    }   
+    /** 
+     * @return the fuel type of the engine 
+     */
+    public FuelType getFuelType() {
+        return this.fuelType;
+    }
 
+    /** 
+     * @return the maximum fuel capacity 
+     */
+    public double getMaxFuel() {
+        return this.maxFuel;
+    }
+
+    /** 
+     * @return the current fuel level 
+     */
+    public double getCurrentFuel() {
+        return this.currentFuel;
+    }
+
+    /**
+     * Refill the engine
+     */
+    public void refuel() {
+        this.currentFuel = this.maxFuel;
+    } 
+
+    /**
+     * @return true if there was fuel to consume
+     */
     public Boolean go() {
-        //need to decrease the current fuel level
-        if (currentFuelLevel > 0) {
+        if (this.currentFuel > 0) {
+            this.currentFuel -= 1.0; 
+            System.out.println("Remaining fuel level: " + this.currentFuel);
             return true;
         } else {
             return false;
-        }   
-        System.out.println("Current fuel level:" + currentFuelLevel);
+        }
     }
+    
+    /**
+     * Test Engine
+     */
    public static void main(String[] args) {
        Engine myEngine = new Engine(FuelType.ELECTRIC, 0.0, 100.0);
        while (myEngine.go()) {
