@@ -19,6 +19,14 @@ public class Passenger implements PassengerRequirements {
     public String getName() {
         return name;
     }
+
+    /**
+    * @return the passenger's name as a string
+    */
+    @Override
+    public String toString() {
+        return this.name;
+    }
     
     /**
      * Board the car
