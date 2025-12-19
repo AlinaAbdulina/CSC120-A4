@@ -2,10 +2,14 @@ import java.util.ArrayList;
 
 public class Car implements CarRequirements {
 
-    /** The list of passengers */
+    /** 
+     * The list of passengers 
+     */
     private ArrayList<Passenger> passengers;
 
-    /** The maximum number of passengers in a car */
+    /** 
+     * The maximum number of passengers in a car 
+     */
     private int maxCapacity;    
 
     /**

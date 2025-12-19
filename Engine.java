@@ -68,9 +68,6 @@ public class Engine implements EngineRequirements{
         }
     }
     
-    /**
-     * Test Engine
-     */
    public static void main(String[] args) {
        Engine myEngine = new Engine(FuelType.ELECTRIC, 0.0, 100.0);
        while (myEngine.go()) {
